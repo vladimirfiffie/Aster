@@ -21,7 +21,7 @@ Aster is a complete shopping application designed to look and feel like a modern
 
 | Home & Feed | Product & Details | Interactive Bag |
 |:---:|:---:|:---:|
-| <img src="screenshots/Home_Screen.jpg" width="240" alt="Aster Home Screen"> | <img src="" width="240" alt="Aster Product Detail Screen"> | <img src="screenshots/Bag_Screen.jpg" width="240" alt="Aster Bag Screen"> |
+| <img src="screenshots/Home_Screen.jpg" width="240" alt="Aster Home Screen"> | <img src="screenshots/Product_Details.jpg" width="240" alt="Aster Product Detail Screen"> | <img src="screenshots/Bag_Screen.jpg" width="240" alt="Aster Bag Screen"> |
 | <sub>Promo carousel & deals</sub> | <sub>Price history & reviews</sub> | <sub>Free shipping & promotions</sub> |
 
 | Checkout Stepper | Live Orders Tracker | AMOLED Black Theme |                                                           

@@ -26,7 +26,7 @@ Aster is a complete shopping application designed to look and feel like a modern
 
 | Checkout Stepper | Live Orders Tracker | AMOLED Black Theme |                                                           
 |:---:|:---:|:---:|
-| <img src="screenshots/Checkout_Screen.jpg" width="240" alt="Aster Checkout Screen"> | <img src="" width="240" alt="Aster Orders Screen"> | <img src="screenshots/AMOLED_Settings.jpg" width="240" alt="Aster AMOLED Black Mode"> |
+| <img src="screenshots/Checkout_Screen.jpg" width="240" alt="Aster Checkout Screen"> | <img src="screenshots/Live_Order_Screen.jpg" width="240" alt="Aster Orders Screen"> | <img src="screenshots/AMOLED_Settings.jpg" width="240" alt="Aster AMOLED Black Mode"> |
 | <sub>Biometrics & address forms</sub> | <sub>Real-time status stages</sub> | <sub>True-black UI surfaces</sub> |
 
 ---

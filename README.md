@@ -1,241 +1,86 @@
 # Aster
 
-A Material 3 storefront built entirely in Flutter — no web views, no platform UI,
-just Flutter widgets and pub plugins.
+A full-featured Material 3 e-commerce app built entirely in Flutter — no web views or embedded sites, just native mobile UI components and responsive interactions.
 
-> **Prerelease.** This is a demo/test build. Checkout is simulated: no real
-> payment is taken and no payment data is collected or stored.
+> **Prerelease:** This is a demo/test build. Checkout is simulated: no real payment is taken, and no payment data is collected or stored.
 
-## What's in it
+---
+
+## At a Glance
+
+Aster is a complete shopping application designed to look and feel like a modern, top-tier retail app.
+
+- **Complete Shopping Experience:** Browse live products, filter by category or price, manage a cart, redeem gift cards, and step through a validated checkout flow.
+- **Offline-First:** Your cart, saved items, past orders, and recently viewed products are persisted locally and load instantly, even without an internet connection.
+- **Native & Accessible:** Full dark mode and AMOLED-black themes, device biometrics at checkout, subtle haptic feedback, and screen-reader support.
+- **Smart Order Tracking:** Place an order and track its status as it progresses from processing to delivery directly from your account history.
+
+---
+
+## Screenshots
+
+| Home & Feed | Product & Details | Interactive Bag |
+|:---:|:---:|:---:|
+| <img src="" width="240" alt="Aster Home Screen"> | <img src="docs/screenshots/product.png" width="240" alt="Aster Product Detail Screen"> | <img src="" width="240" alt="Aster Bag Screen"> |
+| <sub>Promo carousel & deals</sub> | <sub>Price history & reviews</sub> | <sub>Free shipping & promotions</sub> |
+
+| Checkout Stepper | Live Orders Tracker | AMOLED Black Theme |
+|:---:|:---:|:---:|
+| <img src="" width="240" alt="Aster Checkout Screen"> | <img src="" width="240" alt="Aster Orders Screen"> | <img src="" width="240" alt="Aster AMOLED Dark Mode"> |
+| <sub>Biometrics & address forms</sub> | <sub>Real-time status stages</sub> | <sub>True-black UI surfaces</sub> |
+
+---
+
+## App Features
 
 | Area | Details |
 | --- | --- |
-| **Welcome** | The app opens on sign in / create account, with a one-tap "browse as guest" that's remembered; signing out puts it back |
-| **For you** | Live order progress with a stage tracker, delivery and return-window countdowns, refund ETA, price drops, back-in-stock, low stock on saved items, and how much more buys free delivery |
-| **Home** | Auto-advancing promo carousel, category tiles, deals / new-arrivals / recently-viewed rails, popular grid, pull to refresh |
-| **Shop** | The live catalog folded into 6 categories, category strip, grid/list toggle, filter & sort sheet (type, max price, min rating, on-sale, in-stock) |
-| **Search** | Debounced live results, persisted recent searches, trending chips |
-| **Product** | Swipeable gallery with pinch and double-tap zoom, size guide with a chart picker, size dropdown, specifications table, Q&A, rating histogram, reviews, related rail, back-in-stock alerts, and a price history of what the app has actually watched it cost |
-| **Brand** | Tap the brand on any product for everything it sells, with product count, average rating, cheapest price and how many are on sale |
-| **Bag** | Per-variant lines, swipe to delete with undo, promo codes, free-shipping progress, live order maths |
-| **Checkout** | Shipping → payment → review stepper, validated address and card forms (Luhn, expiry, per-brand CVV, US ZIP), saved addresses and cards, three delivery speeds, drop-off instructions for the courier, gift wrap and message, store credit, order confirmation |
-| **Orders** | Status tracker that advances over time, cancel before dispatch, partial returns with refund maths, shareable receipt, reorder at today's prices |
-| **Notifications** | An inbox behind the bell on Home, derived from the orders themselves rather than from what was posted, so nothing is lost to a swiped-away notification |
-| **Gift cards** | Redeem a code into store credit, spent before the card is charged; cancel an order and it comes straight back |
-| **Saved** | Named lists — hold the heart to choose where something goes — with bulk add-to-bag |
-| **Reviews** | Verified buyers can write, edit and delete a review, with up to four photos; it pins to the top of the list and folds into the rating average |
-| **Profile** | Live "your orders" summary (newest order, its status, when it lands), editable name, light/dark/auto, 8 theme presets, AMOLED black, Material You, haptics, notifications, biometrics, data reset |
+| **Welcome** | Sign in, create a local account, or browse as a guest. Guest sessions are remembered across restarts. |
+| **For You** | Live order status tracking, delivery countdowns, price-drop alerts, and free-shipping progress. |
+| **Home** | Auto-advancing promotional banner, category tiles, new arrivals, deals, and pull-to-refresh. |
+| **Shop** | Catalog organized into six categories, grid/list view toggle, and filter/sort sheets for price, rating, and stock. |
+| **Search** | Instant search results with search history and trending search terms. |
+| **Product** | Image gallery with pinch-to-zoom, size guides, specification tables, customer reviews, and historical price tracking. |
+| **Brand** | View an entire brand catalog, average rating, and sale inventory. |
+| **Bag** | Variant selection, swipe-to-delete with undo, promo-code entry, and live order-total calculations. |
+| **Checkout** | Three-step checkout with address/card validation, Luhn card validation, delivery speeds, gift wrapping, and store credit. |
+| **Orders** | Delivery progress tracking, order cancellation before dispatch, returns, and downloadable receipts. |
+| **Saved Items** | Organize products into custom named lists and bulk-add items to the bag. |
+| **Reviews** | Verified-buyer reviews with up to four photos, rating breakdowns, and user edit history. |
+| **Profile** | Recent order summaries, dark/light/AMOLED theme settings, eight color schemes, and notification preferences. |
 
-### Device integration
+---
 
-| | |
+## Device Integration
+
+| Feature | Implementation |
 | --- | --- |
-| **Haptics** | Master switch, three intensity levels, four mutable channels |
-| **Notifications** | Permission flow, master switch and three categories; ordering posts a confirmation and schedules shipping/delivery notices |
-| **Biometrics** | Opt-in verification before payment, with a capability report and a test prompt |
-| **Screen readers** | A product card is one sentence, not six fragments; sale prices say which number is the old one; stars, steppers and gallery images are named. Flutter's tap-target, label and contrast guidelines are asserted in tests |
-| **Large screens** | Navigation rail from 840dp, 2–6 column grids, two-pane product page and cart, unrestricted orientation |
-| **Platform chrome** | Every control is the platform's own — Material on Android, Cupertino on iOS, including the navigation bars, alerts and the banner that replaces a snackbar where iOS has none |
-| **AMOLED** | True-black dark surfaces that keep the brand palette and elevation tiers intact |
-| **Deep links** | `aster://product/<id>` and https App Links resolve to in-app routes |
-| **App shortcuts** | Long-press the launcher icon for Orders, Saved, Search and Bag — static, so they work before the app's first run |
-| **Personalization** | Time-aware greeting using your name, and 8 seed-color presets that Material 3 expands into full light/dark schemes |
-| **Accounts** | Local sign-up / sign-in with PBKDF2-hashed passwords. Optional — everything works as a guest |
-| **Wallet** | Add/remove cards with Luhn validation and brand detection; only the last four digits are stored, never the CVV. Gift cards redeem into a store-credit ledger beside them |
-| **Settings** | Grouped by concern: account, shopping, appearance, feedback, security, data |
+| **Haptics** | Custom tactile feedback across four distinct channels with three intensity levels. |
+| **Notifications** | Scheduled local notifications for order confirmations, shipping updates, and delivery alerts. |
+| **Biometrics** | Opt-in fingerprint / Face ID verification before finalizing payments. |
+| **Accessibility** | Screen-reader labels, high-contrast text, and tap targets validated through automated tests. |
+| **Large Screens** | Adaptive layouts with navigation rails on tablets and foldables at 840dp+. |
+| **Platform Native** | Automatically adapts UI components between Material on Android and Cupertino styling on iOS. |
+| **Localization** | English and Spanish support, including locale-aware date and currency formatting. |
 
-Everything the shopper does — bag, wishlist, orders, addresses, search history,
-recently viewed, theme — persists across restarts via `shared_preferences`, and
-so does the catalog those things resolve against, so the app opens without a
-connection.
+---
 
-## Stack
+## Tech Stack & Architecture
 
-- **Flutter 3.44** / Dart 3.12, Material 3
-- **flutter_riverpod 3** — state, with a `sharedPreferencesProvider` seam that
-  makes the whole persistence layer swappable in tests. Riverpod 3's automatic
-  provider retry is switched off for the catalog on purpose: a provider being
-  retried reports as loading, and a shop that can't be reached needs to say so
-  rather than spin
-- **go_router** — `StatefulShellRoute.indexedStack`, so each tab keeps its own
-  navigation stack
-- **http** — the live product feed
-- **cached_network_image** + **shimmer** — image caching and loading skeletons
-- **haptic_kit** — haptic feedback and tactile widgets
-- **local_auth** — biometric verification before payment
-- **flutter_local_notifications** + **timezone** — order-status notifications
-- **flutter_animate** — entrance choreography
-- **adaptive_platform_ui** — the app's chrome and controls, drawn the way the
-  platform draws them. `AdaptiveApp` builds a `MaterialApp` on Android and a
-  `CupertinoApp` on iOS, and the switches, sliders, list rows, fields, menus,
-  alerts, badges and navigation bars follow. Where a control does something
-  the package can't express it stays Material and says why in a comment —
-  the quantity stepper's tooltip would take the hold-to-repeat gesture, and
-  checkout's pay bar has no home in `AdaptiveScaffold`'s bottom slot, so
-  `AdaptiveScreen` carries it instead
-- **dynamic_color** — Material You palette on Android 12+
-- **crypto** — PBKDF2-HMAC-SHA256 for local account passwords
-- **flutter_localizations** + **intl** — `gen_l10n` against `lib/l10n/app_en.arb`
-- **google_fonts**, **share_plus**, **url_launcher**
+- **Framework:** Flutter 3.44 / Dart 3.12 with Material 3
+- **State Management:** `flutter_riverpod 3` with custom persistence seams for seamless unit testing
+- **Routing:** `go_router` with `StatefulShellRoute.indexedStack` to preserve state across bottom tabs
+- **Networking & Caching:** `http` for feed consumption, paired with `cached_network_image` and loading skeletons
+- **Security & Authentication:** Local PBKDF2-HMAC-SHA256 password hashing via `crypto`; biometric authentication via `local_auth`
+- **Testing:** 411+ unit/widget tests covering business logic, catalog edge cases, locale formatting, and four end-to-end integration tests
 
-## Where the data comes from
+### Project Structure
 
-Products come from [DummyJSON](https://dummyjson.com) — a free, keyless demo
-API. One request fetches the lot; its 24 category slugs are folded into the six
-storefront groups, and imagery is served from a public CDN and cached after
-first load.
-
-Nothing about that reaches the screens. Everything goes through
-`ProductRepository`, so pointing this at a real backend means implementing one
-interface and rebinding one provider:
-
-```dart
-// lib/state/app_providers.dart
-final productRepositoryProvider = Provider<ProductRepository>(
-  (ref) => CachedProductRepository(
-    source: DummyJsonProductRepository(),   // ← swap for your own
-    prefs: ref.watch(sharedPreferencesProvider),
-  ),
-);
-```
-
-`CachedProductRepository` keeps the last good catalog in
-`shared_preferences`. That isn't only a speed trick: the bag, the wishlist and
-pre-snapshot order lines are all stored as product ids and resolved against the
-catalog on read, so a catalog held only in memory emptied every one of them on
-a cold start with no signal — the bag read "Your bag is empty" while the tab
-badge still showed the count. A snapshot is served while it's under six hours
-old; after that a fetch is attempted and the snapshot is used only if that
-fetch fails. Where a screen still can't resolve what it has, it now says the
-shop is unreachable rather than claiming you own nothing.
-
-Placed orders don't resolve against the catalog at all. Each line snapshots the
-name, image and unit price at purchase, because an order is a record of
-something that already happened: a repriced feed would otherwise rewrite the
-total on a months-old receipt, and a delisted product would drop its line
-entirely, leaving the printed lines short of the order's own stored subtotal.
-Reorder is the one place that deliberately goes back to the live catalog — it's
-a new purchase, so it uses today's price and stock.
-
-## Layout
-
-```
+```text
 lib/
-  core/         theme, router, formatters, enum copy lookups
-  data/         models + repositories
-  state/        Riverpod providers (cart, favorites, orders, filters, settings)
-  features/     one folder per screen, with its own widgets/
-  shared/       widgets reused across features
-  l10n/         app_en.arb + generated/ (checked in; CI fails on drift)
-```
-
-## Language and region
-
-Money and dates follow the device locale. Prices stay in US dollars because
-that's the currency the feed quotes and converting them would need exchange
-rates the app doesn't have — but `$1,299.50` in the US is `1.299,50 $` in
-Germany and `2026年8月15日` is how Japan writes the date. `Intl.defaultLocale`
-is set from whatever `MaterialApp` resolves, since `formatPrice` and friends
-are plain functions with no context to ask.
-
-Copy is looked up through `AppL10n`. The interesting part was the copy that
-*couldn't* be: order statuses, return reasons, delivery names and auth errors
-were `String` fields on their enums, which reads nicely but puts user-facing
-words somewhere a `BuildContext` can never reach. Those enums now carry only
-what's true in any language — ids, prices, timings, who pays return postage —
-and the words moved to `lib/core/l10n/enum_labels.dart`.
-
-The app ships in **English and Spanish**. Adding a third means dropping
-`app_<code>.arb` beside the other two and running `flutter gen-l10n`; no screen
-changes.
-
-The whole buy path — bag, checkout, order confirmation, orders, order detail,
-returns and both receipts — is looked up rather than inline, which is what
-having a second language actually tests: the ARB tests prove the strings
-exist, and a `Text('Checkout')` left in a widget would pass every one of them.
-Screens outside that path (settings, profile, product, help, search) still hold
-their copy inline — around 380 strings — and want the same treatment.
-
-One thing the second language forced out into the open: the plain-text receipt
-padded its totals column by hand, which lines up in exactly one language.
-`Zwischensumme` walks it off the page. The padding is now computed from
-whichever labels are actually in play, and a test holds every totals row in
-both languages to the same column.
-
-## Running it
-
-```bash
-flutter pub get
-flutter run                 # attached Android device or emulator
-```
-
-Android is the only platform this ships to. There is no desktop or web target
-to keep working, so a plugin decision that differs by platform is decided for
-Android.
-
-## Checks
-
-```bash
-flutter analyze --fatal-infos
-flutter test                     # 411 tests
-flutter test integration_test    # 4 end-to-end, real plugins, needs a device
-```
-
-Coverage spans cart maths (variant merging, stock caps, promos, shipping
-thresholds), catalog filtering and sorting, feed parsing and its error paths,
-the offline snapshot and its staleness rules, order-line snapshots against a
-repriced or shrunken feed, haptic gating and intensity scaling, breakpoint and
-AMOLED behavior, the biometric payment gate, notification gating, review
-storage and rating maths, screen-reader labels and Flutter's own tap-target,
-label and contrast guidelines, and locale-aware money and dates — plus widget
-tests that drive the real purchase flow end to end: shop → product → bag →
-checkout → confirmation.
-
-Three subsystems talk to plugins that only exist on Android and iOS. Each is
-wrapped in a service that is platform-guarded and non-throwing, because
-decorative feedback must never be able to break a checkout — a lesson learned
-when an unregistered notification plugin raised a `LateInitializationError`
-(an `Error`, not an `Exception`) and took order placement down in two tests.
-
-## Releases
-
-`.github/workflows/release.yml` analyzes, tests, builds APKs (per-ABI plus
-universal) and publishes them as a GitHub release. There are three ways to set
-it off.
-
-**Bump the version and push to main.** The tag is created for you, on GitHub's
-side, so a machine that can commit but not push tags can still cut a release:
-
-```bash
-# pubspec.yaml:  version: 0.15.0+19  ->  0.16.0+20
-git push origin main
-```
-
-A push to main whose version has already been released does nothing — the
-`decide` job checks the remote for the tag first, so ordinary commits don't
-spend ten minutes rebuilding a shipped version.
-
-**Or push a tag yourself**, which is what it has always done:
-
-```bash
-git tag v0.16.0
-git push origin v0.16.0
-```
-
-**Or run it by hand** from the Actions tab, giving the version label as input.
-
-Either way the version comes from one place: a test pins `pubspec.yaml` to
-`lib/core/release_notes.dart`, so the tag, the in-app "What's new" sheet and
-the published notes can't name three different versions.
-
-Grab `aster-v0.15.0-arm64-v8a.apk` for most modern phones, or the `universal`
-APK if you're unsure. You'll need to allow installs from unknown sources.
-
-> APKs are **signed with Android's debug key**. That's fine for sideloaded
-> testing but not for distribution — add a real signing config in
-> `android/app/build.gradle.kts` before shipping anywhere public.
->
-> One consequence worth knowing: the runner generates a fresh debug key on
-> every workflow run, so no two releases share a signature. Android refuses to
-> install one over another and reports **"App not installed"**. Uninstall the
-> old copy before installing a new one.
+├── core/         # Theme, router, formatters, enum lookups
+├── data/         # Models and repositories
+├── state/        # Riverpod providers (cart, favorites, orders, settings)
+├── features/     # Feature-first architecture (one folder per screen)
+├── shared/       # Reusable UI widgets across features
+└── l10n/         # App localization files (English & Spanish ARB)

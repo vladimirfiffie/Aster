@@ -21,12 +21,12 @@ Aster is a complete shopping application designed to look and feel like a modern
 
 | Home & Feed | Product & Details | Interactive Bag |
 |:---:|:---:|:---:|
-| <img src="" width="240" alt="Aster Home Screen"> | <img src="docs/screenshots/product.png" width="240" alt="Aster Product Detail Screen"> | <img src="" width="240" alt="Aster Bag Screen"> |
+| <img src="screenshots/Home_Screen.jpg" width="240" alt="Aster Home Screen"> | <img src="" width="240" alt="Aster Product Detail Screen"> | <img src="screenshots/Bag_Screen.jpg" width="240" alt="Aster Bag Screen"> |
 | <sub>Promo carousel & deals</sub> | <sub>Price history & reviews</sub> | <sub>Free shipping & promotions</sub> |
 
-| Checkout Stepper | Live Orders Tracker | AMOLED Black Theme |
+| Checkout Stepper | Live Orders Tracker | AMOLED Black Theme |                                                           
 |:---:|:---:|:---:|
-| <img src="" width="240" alt="Aster Checkout Screen"> | <img src="" width="240" alt="Aster Orders Screen"> | <img src="" width="240" alt="Aster AMOLED Dark Mode"> |
+| <img src="screenshots/Checkout_Screen.jpg" width="240" alt="Aster Checkout Screen"> | <img src="" width="240" alt="Aster Orders Screen"> | <img src="screenshots/AMOLED_Settings.jpg" width="240" alt="Aster AMOLED Black Mode"> |
 | <sub>Biometrics & address forms</sub> | <sub>Real-time status stages</sub> | <sub>True-black UI surfaces</sub> |
 
 ---
